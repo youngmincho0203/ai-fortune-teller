@@ -11,11 +11,11 @@
 이렇게 다 만들면 메인화면 가벼워지지 않을까요?
 메인화면에서 수정 불가능하게 하는게 만들기 쉽지 않을까요?
 
-일정(27) : db 테이블 만들기 -> auth.js(로그인/회원가입) -> Login.js, Login.css +++ 메인화면 다음주 발표ppt
+일정(27) : db 테이블 만들기 -> auth.js(로그인/회원가입) -> Login.js, Login.css +++ 메인화면 구상, 다음주 발표ppt
+일정(4) : 
 
-완료(27) : db 테이블, auth.js
-예정(28) : api.js app.js login.js login.css db.js
-
+완료(27) : db 테이블, backend/routes/auth.js, frontend/api.js, frontend/app.js
+완료(28) : frontend/pages/login.js, frontend/pages/login.css, backend/db.js
 
 
 mysql

@@ -1,0 +1,103 @@
+/* frontend/src/pages/Login.css */
+
+/* 전체 화면 배경 */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  padding: 20px; /* 모바일에서 여백 확보 */
+}
+
+/* 흰색 카드 박스 */
+.login-box {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;          /* 모바일엔 꽉 차게 */
+  max-width: 400px;     /* PC에선 너무 안 커지게 제한 */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* 제목 */
+.login-box h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #333;
+  font-weight: 800; /* 좀 더 굵게 강조 */
+}
+
+/* 입력창 묶음 */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+/* 라벨 */
+.input-group label {
+  font-size: 13px;
+  color: #666;
+  font-weight: bold;
+  margin-left: 2px;
+}
+
+/* 실제 입력칸 */
+.input-group input, 
+.input-group select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+/* 입력칸 포커스 */
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #6c5ce7;
+}
+
+/* 체크박스 정렬용 (이게 중요!) */
+.input-group div {
+  display: flex;
+  align-items: center;
+}
+
+/* 실행 버튼 */
+.login-btn {
+  padding: 14px;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #5849c2;
+}
+
+/* 모드 전환 텍스트 */
+.toggle-text {
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  text-decoration: underline;
+  margin-top: 5px;
+}
+
+.toggle-text:hover {
+  color: #6c5ce7;
+}

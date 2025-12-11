@@ -11,6 +11,8 @@ router.post('/register', async (req, res) => {
   // 프론트엔드에서 보낸 정보들을 꺼냄
   const { email, password, name, birth_date, birth_time, gender } = req.body;
 
+  console.log(email);
+
   try {
     // [1] 이메일 중복 체크
     const [existingUsers] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
@@ -70,7 +72,7 @@ router.post('/login', async (req, res) => {
 
   } catch (error) {
     console.error('로그인 에러:', error);
-    res.status(500).json({ message: '서버 에러' });
+    res.status(500).json({ message: '서버 에러' }); //로그인시 에러로 바로 들어와짐
   }
 });
 

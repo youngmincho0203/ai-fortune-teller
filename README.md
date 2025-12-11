@@ -50,3 +50,27 @@ CREATE TABLE fortune_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 언제 봤는지
     FOREIGN KEY (user_id) REFERENCES users(id) -- users 테이블이랑 연결
 );
+
+# 프로젝트 설명
+## 페이지 구성 및 로직
+![page_and_usecase](./img/Page_and_usecase.png)
+
+## Architecture
+![project_architecture](./img/Architecture.png)
+
+## 프로젝트 구조(차후 업데이트 예정)
+- \Backend
+    - \routes
+        - auth.js
+        - fortune.js
+    - db.js
+    - server.js
+- \Frontend
+    - \public
+    - \src
+        - \pages
+            - FortuneMain.js / .css
+            - Login.js / .css
+            - Result.js / .css
+    - api.js
+    - App.js

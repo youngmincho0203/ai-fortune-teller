@@ -78,7 +78,7 @@ function Login() {
           <input
             name="email"
             type="email"
-            placeholder="이메일 아이디"
+            placeholder="이메일"
             value={formData.email}
             onChange={handleChange}
           />

@@ -13,10 +13,18 @@
 
 일정(27) : db 테이블 만들기 -> auth.js(로그인/회원가입) -> Login.js, Login.css +++ 메인화면 구상, 다음주 발표ppt
 일정(4) : backend/utils/openai.js(apikey), backend/routes/fortune.js(prompt수정)
+일정(18) : 발표 - 11:50
 
 완료(27) : db 테이블, backend/routes/auth.js, frontend/api.js, frontend/app.js
 완료(28) : frontend/pages/login.js, frontend/pages/login.css, backend/db.js
+완료(12) : frontend/pages/fortuneMain.css, frontend/pages/fortuneMain.js
+완료(13) : frontend/pages/result.css, frontend/pages/result.js
 
+실행
+cd backend
+npx nodemon server.js
+cd frontend
+npm start
 
 mysql
 /* 1. 데이터베이스(창고) 만들기 - 이름: fortune_db */

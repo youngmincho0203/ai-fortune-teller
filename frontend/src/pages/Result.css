@@ -1,0 +1,109 @@
+/* 전체 배경 */
+.result-container {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* 1. 로딩 박스 스타일 */
+.loading-box {
+  text-align: center;
+  color: #555;
+}
+
+.loading-box h2 {
+  margin-top: 20px;
+  font-size: 24px;
+  color: #6c5ce7;
+}
+
+/* 빙글빙글 도는 수정구슬 애니메이션 */
+.spinner {
+  font-size: 60px;
+  display: inline-block;
+  animation: spin 2s infinite linear; /* 2초마다 한 바퀴 회전 */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg) scale(1.2); } /* 중간에 살짝 커짐 */
+  100% { transform: rotate(360deg); }
+}
+
+/* 2. 결과 카드 스타일 */
+.result-card {
+  background: white;
+  width: 100%;
+  max-width: 600px; /* 너무 넓지 않게 */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border: 1px solid #eee;
+  animation: slideUp 0.5s ease-out; /* 아래에서 위로 스윽 올라오는 효과 */
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 카드 헤더 */
+.card-header {
+  text-align: center;
+  border-bottom: 2px solid #f0f2f5;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.card-header .icon {
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card-header h2 {
+  font-size: 28px;
+  color: #333;
+  font-weight: 800;
+}
+
+/* AI 답변 내용 (가장 중요!) */
+.result-content {
+  font-size: 16px;
+  line-height: 1.8; /* 줄 간격 넓게 해서 읽기 편하게 */
+  color: #444;
+  white-space: pre-wrap; /* AI가 준 줄바꿈 그대로 적용 */
+  margin-bottom: 40px;
+  text-align: justify; /* 양쪽 정렬 */
+  padding: 10px;
+  background-color: #fcfcfc; /* 아주 연한 회색 배경 */
+  border-radius: 10px;
+}
+
+/* 에러 박스 */
+.error-box {
+  text-align: center;
+}
+.error-box h2 { color: #e74c3c; margin-bottom: 10px; }
+
+/* 돌아가기 버튼 */
+.back-btn {
+  width: 100%;
+  padding: 15px;
+  background-color: #6c5ce7;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.back-btn:hover {
+  background-color: #5849c2;
+  transform: translateY(-2px);
+}

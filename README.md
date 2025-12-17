@@ -58,3 +58,25 @@ CREATE TABLE fortune_logs (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- 언제 봤는지
     FOREIGN KEY (user_id) REFERENCES users(id) -- users 테이블이랑 연결
 );
+
+
+backend/
+├── .env                  # [설정] DB 접속 정보 및 OpenAI API 키 저장
+├── server.js             # [진입점] 서버 실행 및 전체 라우팅 설정
+├── db.js                 # [DB] MySQL 데이터베이스 연결 설정
+├── routes/
+│   ├── auth.js           # [API] 회원가입, 로그인 처리 로직
+│   └── fortune.js        # [API] 사주 요약 요청, DB 캐싱, AI 연동 로직
+└── utils/
+    └── openai.js         # [도구] OpenAI API 연결 객체 설정
+
+frontend/src/
+├── api.js                # [통신] Axios 설정 (Backend와 통신하는 기본 주소 설정)
+├── App.js                # [라우팅] 페이지 이동 경로 설정 (Login <-> Main <-> Result)
+└── pages/
+    ├── Login.js          # [화면] 로그인 및 회원가입 페이지
+    ├── Login.css         # [스타일] 로그인 페이지 디자인
+    ├── FortuneMain.js    # [화면] 메인 대시보드 (사용자 정보, 운세 선택)
+    ├── FortuneMain.css   # [스타일] 메인 페이지 디자인
+    ├── Result.js         # [화면] 운세 결과 페이지
+    └── Result.css        # [스타일] 결과 페이지 디자인

@@ -7,7 +7,7 @@
   align-items: center;
   min-height: 100vh;
   background-color: #f0f2f5;
-  padding: 20px; /* 모바일에서 여백 확보 */
+  padding: 20px;
 }
 
 /* 흰색 카드 박스 */
@@ -16,8 +16,8 @@
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;          /* 모바일엔 꽉 차게 */
-  max-width: 400px;     /* PC에선 너무 안 커지게 제한 */
+  width: 100%;
+  max-width: 400px;     /* 너무 안 커지게 제한 */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -64,7 +64,7 @@
   border-color: #6c5ce7;
 }
 
-/* 체크박스 정렬용 (이게 중요!) */
+/* 체크박스 정렬용 */
 .input-group div {
   display: flex;
   align-items: center;

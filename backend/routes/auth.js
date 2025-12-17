@@ -12,17 +12,16 @@ router.post('/register', async (req, res) => {
   const { email, password, name, birth_date, birth_time, gender } = req.body;
 
   try {
-    // [1] 이메일 중복 체크
+    // 이메일 중복 체크
     const [existingUsers] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
     if (existingUsers.length > 0) {
       return res.status(400).json({ message: '이미 존재하는 이메일입니다.' });
     }
 
-    // [2] 비밀번호 암호화
+    // 비밀번호 암호화
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    // [3] DB에 저장 (시간이 없으면 null로 저장)
-    // birth_time이 빈 문자열('')이거나 undefined면 null로 바꿔주는 로직 포함
+    // DB에 저장 (모름 -> null로 저장)
     const timeValue = birth_time ? birth_time : null;
 
     await db.query(
@@ -46,24 +45,24 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // [1] 이메일로 사용자 찾기
+    // 이메일로 사용자 찾기
     const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
     
-    // 유저가 없으면?
+    // 유저가 없는 경우
     if (users.length === 0) {
       return res.status(401).json({ message: '가입되지 않은 이메일입니다.' });
     }
 
     const user = users[0];
 
-    // [2] 비밀번호 확인 (bcrypt가 암호화된 거랑 비교)
+    // 비밀번호 확인
     const isMatch = await bcrypt.compare(password, user.password);
     
     if (!isMatch) {
       return res.status(401).json({ message: '비밀번호가 틀렸습니다.' });
     }
 
-    // [3] 로그인 성공! (비밀번호 빼고 나머지 정보만 돌려줌)
+    // 로그인 성공 (비밀번호 빼고 나머지 정보만 돌려줌)
     const { password: _, ...userData } = user; 
     
     res.json({ message: '로그인 성공!', user: userData });

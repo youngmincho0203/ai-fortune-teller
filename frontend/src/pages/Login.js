@@ -12,14 +12,14 @@ function Login() {
   // 태어난 시간 '모름' 체크박스 상태
   const [isTimeUnknown, setIsTimeUnknown] = useState(false);
 
-  // 사용자가 입력한 모든 값을 저장하는 통 (State)
+  // 사용자가 입력한 모든 값을 저장하는 통
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
     birth_date: "",
     birth_time: "",
-    gender: "male", // 성별 기본값은 남성으로 설정
+    gender: "male",
   });
 
   // 입력창에 글자 칠 때마다 formData 업데이트하는 함수
@@ -40,7 +40,6 @@ function Login() {
         });
 
         // 성공하면 서버가 준 유저 정보(이름, 생년월일 등)를 브라우저에 저장!
-        // (나중에 메인 화면에서 꺼내 쓸 거야)
         localStorage.setItem("user", JSON.stringify(response.data.user));
 
         alert(`${response.data.user.name}님 환영합니다!`);
@@ -63,7 +62,7 @@ function Login() {
       }
 
     } catch (error) {
-      // 서버에서 보낸 에러 메시지 띄우기 (예: "비밀번호 틀렸습니다")
+      // 서버에서 보낸 에러 메시지 띄우기
       alert(error.response?.data?.message || "오류가 발생했습니다.");
     }
   };

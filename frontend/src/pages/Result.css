@@ -8,7 +8,7 @@
   padding: 20px;
 }
 
-/* 1. 로딩 박스 스타일 */
+/* 로딩 박스 스타일 */
 .loading-box {
   text-align: center;
   color: #555;
@@ -33,7 +33,7 @@
   100% { transform: rotate(360deg); }
 }
 
-/* 2. 결과 카드 스타일 */
+/* 결과 카드 스타일 */
 .result-card {
   background: white;
   width: 100%;
@@ -70,7 +70,7 @@
   font-weight: 800;
 }
 
-/* AI 답변 내용 (가장 중요!) */
+/* AI 답변 내용 */
 .result-content {
   font-size: 16px;
   line-height: 1.8; /* 줄 간격 넓게 해서 읽기 편하게 */

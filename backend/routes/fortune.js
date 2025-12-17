@@ -1,12 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db');        // DB 연결
-const openai = require('../utils/openai'); // AI 연결
+const db = require('../db');
+const openai = require('../utils/openai');
 
 /* ===========================================
    AI 사주풀이 요청 API
    주소: POST /api/fortune
-   기능: 오늘의 운세를 조회 (DB 캐싱 + 종합운 로직 추가)
    =========================================== */
 router.post('/', async (req, res) => {
   // 프론트에서 보낸 정보
@@ -17,7 +16,7 @@ router.post('/', async (req, res) => {
 
   try {
     // ---------------------------------------------
-    // 1단계: DB 캐싱 확인 (돈 아끼기!) 💰
+    // 1단계: DB 캐싱 확인 (토큰 아끼기)
     // ---------------------------------------------
     const [existingRows] = await db.query(
       `SELECT * FROM fortune_logs 
@@ -35,7 +34,7 @@ router.post('/', async (req, res) => {
     }
 
     // ---------------------------------------------
-    // 2단계: AI에게 요청하기 (OpenAI API) 🤖
+    // AI에게 요청하기 (OpenAI API)
     // ---------------------------------------------
     console.log(`[Cache Miss] AI에게 ${category} 운세 요청 중...`);
 
@@ -43,7 +42,7 @@ router.post('/', async (req, res) => {
     const timeString = birthTime ? birthTime : "태어난 시간 모름";
     const genderString = gender === "male" ? "남성" : "여성";
 
-    // ✨ [핵심] 카테고리에 따라 AI한테 줄 지령(Instruction)을 다르게 설정
+    // 카테고리에 따라 AI한테 줄 프롬프트를 다르게 설정
     let categoryName = "";
     let specificInstruction = "";
 
@@ -85,13 +84,13 @@ router.post('/', async (req, res) => {
     // GPT 호출
     const completion = await openai.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
-      model: "gpt-4o-mini", // 가성비 모델
+      model: "gpt-4o-mini",
     });
 
     const aiResult = completion.choices[0].message.content;
 
     // ---------------------------------------------
-    // 3단계: 결과 DB에 저장하기 (캐싱) 💾
+    // 결과 DB에 저장하기
     // ---------------------------------------------
     await db.query(
       `INSERT INTO fortune_logs (user_id, category, content) VALUES (?, ?, ?)`,

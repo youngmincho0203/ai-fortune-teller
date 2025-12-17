@@ -8,7 +8,7 @@
   padding: 40px 20px;
 }
 
-/* 상단 헤더 (신비로운 그라데이션 적용) */
+/* 상단 헤더 */
 .header-box {
   text-align: center;
   margin-bottom: 30px;
@@ -34,7 +34,7 @@
   font-size: 16px;
   color: #555;
   display: flex;
-  flex-direction: column; /* 모바일에서 줄바꿈이 나을 수도 있어서 유연하게 */
+  flex-direction: column; /* 줄바꿈 유연하게 */
   align-items: center;
   gap: 8px;
   font-weight: 500;

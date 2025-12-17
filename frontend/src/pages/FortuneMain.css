@@ -1,0 +1,98 @@
+/* 전체 컨테이너: 화면 정중앙 배치 & 신비로운 배경 */
+.fortune-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  
+  /* 메인 박스 */
+  .fortune-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+  
+  /* 환영 메시지 */
+  .welcome-text {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: #e0e0e0;
+  }
+  
+  .user-name {
+    font-weight: bold;
+    color: #ffd700; /* 금빛 포인트 */
+    font-size: 1.8rem;
+  }
+  
+  /* 버튼 그리드 레이아웃 */
+  .button-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2열 배치 */
+    gap: 15px;
+  }
+  
+  /* 마지막 버튼은 꽉 차게 */
+  .button-grid button:last-child {
+    grid-column: span 2;
+  }
+  
+  /* 운세 버튼 스타일 */
+  .fortune-btn {
+    background: linear-gradient(45deg, #FF512F 0%, #DD2476 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* 버튼 별 다른 색상 (선택사항) */
+  .fortune-btn:nth-child(2) { background: linear-gradient(45deg, #4776E6 0%, #8E54E9 100%); }
+  .fortune-btn:nth-child(3) { background: linear-gradient(45deg, #00b09b 0%, #96c93d 100%); }
+  .fortune-btn:nth-child(4) { background: linear-gradient(45deg, #FF8008 0%, #FFC837 100%); }
+  .fortune-btn:nth-child(5) { background: linear-gradient(45deg, #1D976C 0%, #93F9B9 100%); color: #1a1a2e; }
+  
+  /* 호버 효과 */
+  .fortune-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+  }
+  
+  .fortune-btn:active {
+    transform: translateY(1px);
+  }
+
+  /* 로그아웃 버튼 */
+  .logout-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #aaa;
+    margin-top: 30px;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+  }
+
+  .logout-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-color: #fff;
+  }

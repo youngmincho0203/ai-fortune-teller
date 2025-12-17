@@ -1,12 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
+
+// [중요] 설정 파일(.env)을 가장 먼저 읽어야 합니다!
+// backend 폴더의 상위 폴더(..)에 있는 .env 파일을 찾습니다.
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 // 1. 직원(라우터)들 출근시키기
 const authRoutes = require('./routes/auth');
 const fortuneRoutes = require('./routes/fortune');
-
-dotenv.config(); // 설정 파일(.env) 로딩
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -24,5 +27,5 @@ app.use('/api/fortune', fortuneRoutes);
 
 // 4. 서버 켜기
 app.listen(PORT, () => {
-  console.log(`✅ 서버가 세팅되었습니다: http://localhost:${PORT}`);
+  console.log(`서버가 세팅되었습니다: http://localhost:${PORT}`);
 });

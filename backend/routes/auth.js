@@ -36,7 +36,8 @@ router.post('/register', async (req, res) => {
 
   } catch (error) {
     console.error('회원가입 에러:', error);
-    res.status(500).json({ message: '서버 에러가 났어요.' });
+    // 디버깅을 위해 에러 내용을 직접 보여줍니다.
+    res.status(500).json({ message: `서버 에러: ${error.message}` });
   }
 });
 
@@ -50,7 +51,7 @@ router.post('/login', async (req, res) => {
   try {
     // [1] 이메일로 사용자 찾기
     const [users] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
-    
+
     // 유저가 없으면?
     if (users.length === 0) {
       return res.status(401).json({ message: '가입되지 않은 이메일입니다.' });
@@ -60,14 +61,14 @@ router.post('/login', async (req, res) => {
 
     // [2] 비밀번호 확인 (bcrypt가 암호화된 거랑 비교)
     const isMatch = await bcrypt.compare(password, user.password);
-    
+
     if (!isMatch) {
       return res.status(401).json({ message: '비밀번호가 틀렸습니다.' });
     }
 
     // [3] 로그인 성공! (비밀번호 빼고 나머지 정보만 돌려줌)
-    const { password: _, ...userData } = user; 
-    
+    const { password: _, ...userData } = user;
+
     res.json({ message: '로그인 성공!', user: userData });
 
   } catch (error) {

@@ -80,3 +80,25 @@ frontend/src/
     ├── FortuneMain.css   # [스타일] 메인 페이지 디자인
     ├── Result.js         # [화면] 운세 결과 페이지
     └── Result.css        # [스타일] 결과 페이지 디자인
+
+
+
+1. Users 테이블 (사용자 정보)
+역할: 회원가입 시 입력된 개인정보를 영구 저장하며, 사주 분석의 기초 데이터로 활용.
+
+id (PK, INT): 사용자 고유 식별자 (Auto Increment).
+email (VARCHAR, Unique): 로그인 ID (중복 불가).
+password (VARCHAR): bcrypt로 암호화된 비밀번호.
+name (VARCHAR): 사용자 이름.
+birth_date (DATE): 생년월일 (사주 핵심 데이터).
+birth_time (TIME): 태어난 시간 (정확도 향상용, NULL 허용).
+gender (VARCHAR): 성별 (남/여).
+
+2. FortuneLogs 테이블 (운세 기록)
+역할: AI가 생성한 운세 결과를 저장하여 중복 API 호출 방지.
+
+id (PK, INT): 로그 고유 식별자.
+user_id (FK, INT): Users 테이블의 id 참조 (Foreign Key).
+category (VARCHAR): 운세 종류 (money, love, work, health, total).
+content (TEXT): AI가 생성한 운세 분석 텍스트.
+created_at (TIMESTAMP): 생성 일시 (당일 중복 조회 체크용).
